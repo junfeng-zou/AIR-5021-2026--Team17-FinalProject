@@ -58,11 +58,39 @@ python src/data_collection/real_teleop_collect.py
 
 ### 2. LoRA Fine-tuning
 
+Fine-tuning uses the OpenVLA official `finetune.py` script with `torchrun` for multi-GPU support.
+
 ```bash
-cd src/lora_training
-pip install -r requirements.txt
-python train_lora.py
+# Install dependencies
+pip install peft==0.11.1 draccus accelerate
+
+# Single GPU
+torchrun --standalone --nnodes 1 --nproc-per-node 1 \
+  src/openvla/vla-scripts/finetune.py \
+  --vla_path openvla/openvla-7b \
+  --data_root_dir /path/to/rlds_dataset \
+  --dataset_name dobot_pouring \
+  --run_root_dir runs/ \
+  --adapter_tmp_dir adapter-tmp/ \
+  --lora_rank 32 \
+  --batch_size 4 \
+  --grad_accumulation_steps 4 \
+  --learning_rate 4e-4 \
+  --image_aug True \
+  --wandb_project openvla-pouring-v1 \
+  --wandb_entity <your-wandb-entity> \
+  --save_steps 1000 \
+  --max_steps 16000
 ```
+
+Key parameters:
+| Parameter | Value | Description |
+|-----------|-------|-------------|
+| `--lora_rank` | 32 | LoRA rank |
+| `--batch_size` | 4 | Per-GPU batch size |
+| `--grad_accumulation_steps` | 4 | Effective batch size = 16 |
+| `--learning_rate` | 4e-4 | AdamW learning rate |
+| `--max_steps` | 16000 | Total training steps |
 
 ### 3. PC-side Inference
 
