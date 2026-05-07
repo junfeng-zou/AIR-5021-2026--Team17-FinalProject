@@ -1,0 +1,11 @@
+# OpenVLA LoRA training (install in a separate venv from Isaac Sim)
+torch>=2.1.0
+transformers>=4.40.0
+accelerate>=0.26.0
+peft>=0.11.0,<0.14.0
+h5py>=3.10.0
+numpy>=1.24.0
+pillow>=10.0.0
+tqdm>=4.66.0
+safetensors>=0.4.0
+# optional: wandb

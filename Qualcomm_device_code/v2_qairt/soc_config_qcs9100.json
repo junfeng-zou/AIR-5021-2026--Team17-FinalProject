@@ -1,0 +1,12 @@
+{
+  "backend_extensions": {
+    "shared_library_path": "libQnnHtpNetRunExtensions.so",
+    "config": {
+      "vtcm_mb": 8,
+      "dcvs_enable": false,
+      "performance_mode": "burst",
+      "soc_id": 43,
+      "pd_session": "unsigned"
+    }
+  }
+}

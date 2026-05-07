@@ -1,0 +1,16 @@
+{
+  "graphs": [
+    {
+      "graph_names": [
+        "vision_projector_int8"
+      ],
+      "vtcm_mb": 0
+    }
+  ],
+  "devices": [
+    {
+      "dsp_arch": "v73",
+      "soc_id": 77
+    }
+  ]
+}

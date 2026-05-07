@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.Python
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Build / packaging
+*.egg-info/
+dist/
+build/
+
+# ML large files (weights, datasets)
+*.hdf5
+*.h5
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.onnx
+*.mlmodel
+*.bin
+
+# Logs & experiment tracking
+*.log
+logs/
+wandb/
+runs/
+mlruns/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Secrets
+.env
+.env.*
